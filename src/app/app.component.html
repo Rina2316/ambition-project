@@ -9,7 +9,7 @@
 
     <div class="buttontext-div">
       <h1>Live here and now!</h1>
-      <button>
+      <button (click)="scrollIntoForm()">
         Start now
       </button>
     </div>
@@ -83,7 +83,7 @@
 <section>
   <h2>Form</h2>
   <div>
-    <form class="form" method="post" action="#" [formGroup]="applicationForm" (ngSubmit)="sendApplication()">
+    <form #form class="form" method="post" action="#" [formGroup]="applicationForm" (ngSubmit)="sendApplication()">
       <input type="text" name="Name" value="" placeholder="Name" formControlName="name">
       <input type="tel" name="Phone" value="" placeholder="Phone" formControlName="phone">
       <input type="text" name="Email" value="" placeholder="Email" formControlName="email">

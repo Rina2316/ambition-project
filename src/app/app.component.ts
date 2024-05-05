@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApplicationService } from '../../core/services/application.service';
 import { IApplication } from '../../core/interfaces/application.interface';
@@ -11,6 +11,7 @@ import { ToastrService } from '@servoy/ngx-toastr';
 })
 export class AppComponent {
   applicationForm: FormGroup;
+  @ViewChild('form') form?: ElementRef;
 
   get Name() { return this.applicationForm.controls['name'] }
   get Phone() { return this.applicationForm.controls['phone'] }
@@ -32,13 +33,16 @@ export class AppComponent {
     let application: IApplication = this.applicationForm.value;
     this.applicationService.sendApplication(application).subscribe({
       next: () => {
-        console.log('here');
-
         this.toasterService.success('Your application was sended', 'Success');
       },
       error: (err) => {
         this.toasterService.error(err.message ?? err, 'Error');
       }
     })
+  }
+
+  scrollIntoForm(): void {
+    const targetEl = this.form?.nativeElement;
+    targetEl.scrollIntoView({ behavior: "smooth" })
   }
 }
