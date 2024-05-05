@@ -32,6 +32,8 @@ export class AppComponent {
     let application: IApplication = this.applicationForm.value;
     this.applicationService.sendApplication(application).subscribe({
       next: () => {
+        console.log('here');
+
         this.toasterService.success('Your application was sended', 'Success');
       },
       error: (err) => {
