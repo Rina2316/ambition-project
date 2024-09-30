@@ -36,7 +36,7 @@ jobs:
         run: npm install
 
       - name: Build the application
-        run: ng build --base-href "https://rina2316.github.io/ambition-project/" --deploy-url="https://rina2316.github.io/ambition-project/"
+        run: ng build --base-href "https://https://rina2316.github.io/ambition-project/polyfills.js/ambition-project/" --deploy-url="https://rina2316.github.io/ambition-project/"
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.1
